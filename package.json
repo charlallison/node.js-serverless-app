@@ -1,0 +1,22 @@
+{
+  "name": "node.js-serverless-app",
+  "version": "1.0.0",
+  "description": "aws lambda/serverless api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlallison/node.js-serverless-app.git"
+  },
+  "author": "Charles Allison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlallison/node.js-serverless-app/issues"
+  },
+  "homepage": "https://github.com/charlallison/node.js-serverless-app#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.828.0"
+  }
+}
