@@ -102,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Idea directory
+.idea/
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
