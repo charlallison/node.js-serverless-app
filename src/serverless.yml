@@ -4,6 +4,9 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: nodejs12.x
+  profile: ${opt:profile, "serverless-admin"}
+  region: ${opt:region, "ca-central-1"} # sls deploy --region us-east-1
+  stage: ${opt:stage, "dev"}
   lambdaHashingVersion: 20201221
 
 functions:
