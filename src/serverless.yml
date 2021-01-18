@@ -20,7 +20,7 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
-          - AttributeName: user-id
+          - AttributeName: user_id
             AttributeType: N
         KeySchema:
           - AttributeName: user_id
