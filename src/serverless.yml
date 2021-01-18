@@ -24,7 +24,7 @@ resources:
             AttributeType: N
         KeySchema:
           - AttributeName: user_id
-            AttributeType: HASH
+            KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: "5"
           WriteCapacityUnits: "5"
