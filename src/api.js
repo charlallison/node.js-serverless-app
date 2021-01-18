@@ -15,18 +15,18 @@ api.handler = async event => {
         } else if(event.httpMethod === 'GET') {
             // get users in DynamoDB
             if(event.pathParameters) {
-                let userId = event.pathParameters.id;
+                let userId = parseInt(event.pathParameters.id);
                 response.body = JSON.stringify(await api.handleGetUserById(userId));
             } else {
                 response.body = JSON.stringify(await api.handleGetUsers());
             }
         } else if(event.httpMethod === 'PUT') {
             // update user in DynamoDB
-            let userId = event.pathParameters.id;
+            let userId = parseInt(event.pathParameters.id);
             response.body = JSON.stringify(await api.handleUpdateUserById(userId, JSON.parse(event.body)));
         } else if(event.httpMethod === 'DELETE') {
             // update user in DynamoDB
-            let userId = event.pathParameters.id;
+            let userId = parseInt(event.pathParameters.id);
             response.body = JSON.stringify(await api.handleDeleteUserById(userId));
         }
         response.statusCode = 200;
@@ -96,14 +96,14 @@ api.handleUpdateUserById = (userId, item) => {
             Key: {
                 user_id: userId
             },
-            UpdateExpression: "set #n = :n, #j = :j",
+            UpdateExpression: "set #n = :n, #e = :e",
             ExpressionAttributeValues: {
                 ":n": item.name,
-                ":j": item.job
+                ":e": item.email
             },
             ExpressionAttributeNames: {
                 "#n": "name",
-                "#j": "job"
+                "#e": "email"
             },
             ReturnValues: "UPDATED_NEW"
         };
