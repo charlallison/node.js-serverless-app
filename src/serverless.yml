@@ -13,7 +13,7 @@ functions:
   userapi:
     handler: api.handler
 custom:
-  DynamoDBTableName: ${self:provider}-users-${self:provider.stage}
+  DynamoDBTableName: ${self:service}-users-${self:provider.stage}
 resources:
   Resources:
     usersDynamoDbTable:
