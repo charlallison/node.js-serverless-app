@@ -20,10 +20,10 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
-          - AttibeuteName: user-id
+          - AttributeName: user-id
             AttributeType: N
         KeySchema:
-          - AttribeuteName: user_id
+          - AttributeName: user_id
             AttributeType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: "5"
