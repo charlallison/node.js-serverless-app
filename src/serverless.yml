@@ -12,6 +12,27 @@ provider:
 functions:
   userapi:
     handler: api.handler
+    events:
+      - http:
+          path: users
+          method: GET
+          cors: true
+      - http:
+          path: users
+          method: POST
+          cors: true
+      - http:
+          path: users/{id}
+          method: GET
+          cors: true
+      - http:
+          path: users/{id}
+          method: PUT
+          cors: true
+      - http:
+          path: users/{id}
+          method: DELETE
+          cors: true
     environment:
       TABLE_NAME: ${self:custom.DynamoDBTableName}
 
