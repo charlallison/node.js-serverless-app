@@ -12,6 +12,9 @@ provider:
 functions:
   userapi:
     handler: api.handler
+    environment:
+      TABLE_NAME: ${self:custom.DynamoDBTableName}
+
 custom:
   DynamoDBTableName: ${self:service}-users-${self:provider.stage}
 resources:
