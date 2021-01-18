@@ -10,5 +10,5 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
-  hello:
-    handler: handler.hello
+  userapi:
+    handler: api.handler
