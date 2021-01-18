@@ -12,3 +12,20 @@ provider:
 functions:
   userapi:
     handler: api.handler
+custom:
+  DynamoDBTableName: ${self:provider}-users-${self:provider.stage}
+resources:
+  Resources:
+    usersDynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttibeuteName: user-id
+            AttributeType: N
+        KeySchema:
+          - AttribeuteName: user_id
+            AttributeType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: "5"
+          WriteCapacityUnits: "5"
+        TableName: ${self:custom.DynamoDBTableName}

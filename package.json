@@ -16,7 +16,5 @@
     "url": "https://github.com/charlallison/node.js-serverless-app/issues"
   },
   "homepage": "https://github.com/charlallison/node.js-serverless-app#readme",
-  "devDependencies": {
-    "aws-sdk": "^2.828.0"
-  }
+  "devDependencies": {}
 }
