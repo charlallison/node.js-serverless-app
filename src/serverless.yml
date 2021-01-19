@@ -1,12 +1,24 @@
 service: rest-api
 frameworkVersion: '2'
 
+custom:
+  DynamoDBTableName: ${self:service}-users-${self:provider.stage}
+
 provider:
   name: aws
   runtime: nodejs12.x
   profile: ${opt:profile, "serverless-admin"}
   region: ${opt:region, "ca-central-1"} # sls deploy --region us-east-1
   stage: ${opt:stage, "dev"}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:Scan"
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: arn:aws:dynamodb:${self:provider.region}:#{AWS::AccountId}:table/${self:custom.DynamoDBTableName}
   lambdaHashingVersion: 20201221
 
 functions:
@@ -36,8 +48,6 @@ functions:
     environment:
       TABLE_NAME: ${self:custom.DynamoDBTableName}
 
-custom:
-  DynamoDBTableName: ${self:service}-users-${self:provider.stage}
 resources:
   Resources:
     usersDynamoDbTable:
@@ -53,3 +63,6 @@ resources:
           ReadCapacityUnits: "5"
           WriteCapacityUnits: "5"
         TableName: ${self:custom.DynamoDBTableName}
+
+plugins:
+  - serverless-pseudo-parameter
